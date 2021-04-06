@@ -2,47 +2,67 @@
 BASH Cheat Sheet
 ================
 
+If you use Git for software source control then you will be familiar with the menu option 'Git Bash Here.'  
+And you will be familiar with 'git commit', 'git clone' and so on.  
+But Git Bash also provides a number of Unix utilities.  
+
+
+Now that Git has become common for software source control, more developers have access to some Unix functionality 
+through the the 'Git Bash Here' menu option.  
+
+
+
+
 BASH = Bourne Again SHell
 
-(The Bourne Shell being a common shell for Unix.)
+(The Bourne Shell is a common shell for Unix.)
 
 
-Number 1 - How to exit vi without saving changes
-------------------------------------------------
 
-You might never need to do this, but it's like learning to swim. 
-You might not like water and you might never willingly go swimmimg.  
-But one day you might fall into a canal. 
-And so it is with vi.
 
-So remember, vi is a 'modal' editor - it has 'edit mode' and 'command mode'.
-To exit, you must be in command mode.  
-To get into command mode, press ESCAPE.
-Then type this:
+
+Number 1 - How to exit the vi editor without saving changes
+-----------------------------------------------------------
+
+You might never need to do this, but it's a basic life-skill, like 
+learning to swim.  You might never willingly go swimmimg but one day
+you just might fall into a canal.  And so it is with vi.
+
+Vi is a text editor that comes with, I believe, every distribution of
+Unix and Unix-like operating system
+
+The first thing to know about vi is that it's a 'modal' editor - it 
+has an 'edit mode' and a 'command mode'.  To exit vi, you must be in 
+command mode.  Once in command mode, you can type the command to exit.
+
+To enter command mode, press ESCAPE.  Then type this:
   :q!
 and press ENTER.
-Comments: on pressing ':' the cursor goes to the bottom left of the screen.
-You will then see the 'q!' as you type it in.
-The 'q' means 'quit' and the '!' means force it.
 
-If, on the other hand, you do want to save your changes, do this instead.
+Comments: on pressing ':' the cursor goes to the bottom left of the 
+screen.  You will then see the 'q!' as you type it in.  The 'q' means 
+'quit' and the '!' means force it.
+
+If, on the other hand, you do want to save your changes, do this 
+instead.
   Press ESCAPE
+Then type:
   :wq
 The 'w' means 'write' and the 'q' means 'quit'.
 
 A top tip is to open the file in read-only mode using:
   vi -R filename
-You can still edit the file and save the changes but
-you have to use 'w!' to force a save.
+You can still edit the file and save the changes but you have to 
+use 'w!' to force a save.
 
 
 
-
-Useful commands
----------------
+Useful Unix commands
+--------------------
 
 ls   - List the files in a directory.
 cat  - Short for 'concatenate'.  Show the contents of one or more files.
+       You can also join together a number of files.
 grep - Get Regular ExPression.  Search one or more files for a string.
 head - Show the top n lines in a file.
 tail - Show the bottom n lines in a file.
@@ -52,6 +72,14 @@ du   - Show Disk Usage.
 vi   - VIsual editor. Love it or hate it, it's standard on Unix and most Unix-like operating systems.
 diff - Show the differences between a file (similar to reporting from Git).
 dd   - Change bytes within a file. Tricky one.  I used this to change the headings in a large CSV file.
+
+
+Useful command-line operators
+-----------------------------
+
+>   Redirection.
+>>  Redirection with 'append'.
+|   Pipe.
 
 
 Wrinkles

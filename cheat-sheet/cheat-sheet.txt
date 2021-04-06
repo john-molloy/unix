@@ -1,0 +1,94 @@
+
+
+
+BASH Cheat Sheet
+================
+
+BASH = Bourne Again SHell
+
+(The Bourne Shell being a common shell for Unix.)
+
+
+Number 1 - How to exit vi without saving changes
+------------------------------------------------
+
+You might never need to do this, but it's like learning to swim. 
+You might not like water and you might never willingly go swimmimg.  
+But one day you might fall into a canal. 
+And so it is with vi.
+
+So remember, vi is a 'modal' editor - it has 'edit mode' and 'command mode'.
+To exit, you must be in command mode.  
+To get into command mode, press ESCAPE.
+Then type this:
+  :q!
+and press ENTER.
+Comments: on pressing ':' the cursor goes to the bottom left of the screen.
+You will then see the 'q!' as you type it in.
+The 'q' means 'quit' and the '!' means force it.
+
+If, on the other hand, you do want to save your changes, do this instead.
+  Press ESCAPE
+  :wq
+The 'w' means 'write' and the 'q' means 'quit'.
+
+A top tip is to open the file in read-only mode using:
+  vi -R filename
+You can still edit the file and save the changes but
+you have to use 'w!' to force a save.
+
+
+
+
+Useful commands
+---------------
+
+ls   - List the files in a directory.
+cat  - Short for 'concatenate'.  Show the contents of one or more files.
+grep - Get Regular ExPression.  Search one or more files for a string.
+head - Show the top n lines in a file.
+tail - Show the bottom n lines in a file.
+wc   - Word Count. Count the number of lines, words and bytes in a file.
+find - Find files matching a set of parameters, and optionally running a command on those files.
+du   - Show Disk Usage.  
+vi   - VIsual editor. Love it or hate it, it's standard on Unix and most Unix-like operating systems.
+diff - Show the differences between a file (similar to reporting from Git).
+dd   - Change bytes within a file. Tricky one.  I used this to change the headings in a large CSV file.
+
+
+Wrinkles
+--------
+
+Be careful with files being converted from DOS to Unix format.
+DOS text files contain CRLF at the end of each line whereas 
+Unix text files only have LF.
+
+
+
+Delving deeper
+--------------
+
+Look into the following:
+  awk - A complete scripting language
+  sed - This 'stream editor' is for making changes to text files.
+        https://en.wikipedia.org/wiki/Sed
+
+
+
+
+1{...} - perform the operations in {...} only on the first line of the file
+Thus:
+  sed '1{s/Source/Sauce/}' input.t > output.t
+
+
+Assuming you need lines 20 to 40,
+  sed -n '20,40p;41q' file_name           # I need to check the syntax
+  awk 'FNR>=20 && FNR<=40' file_name      # This was fine
+
+
+# dd
+# Changing one byte in a csv file header row.
+# Printf uses hex.
+# seek used decimal.
+printf '\x41' | dd of=file.csv bs=1 count=1 seek=28 conv=notrunc
+

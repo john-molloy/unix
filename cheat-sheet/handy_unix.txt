@@ -6,3 +6,15 @@ Unix / Bash
 echo "$a" | tr '[:upper:]' '[:lower:]'
 echo "$a" | awk '{print tolower($0)}'
 
+
+
+
+tar -cvf  file.tar /folder   # Create tar file
+tar -cvzf  file.tar /folder  # Create compressed tar file
+tar -xvf  file.tar /folder   # Extract tar file
+tar -tvf  file.tar /folder   # List contents of a tar file
+# I haven't tried these yet.
+tar --extract --file=file.tar specificfile.c  # Extract single file
+tar -rvf  file.tar /folder   # Add more files to an existing tar file
+tar -tvfW  file.tar          # Verify tar file
+

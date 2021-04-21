@@ -72,6 +72,7 @@ du   - Show Disk Usage.
 vi   - VIsual editor. Love it or hate it, it's standard on Unix and most Unix-like operating systems.
 diff - Show the differences between a file (similar to reporting from Git).
 dd   - Change bytes within a file. Tricky one.  I used this to change the headings in a large CSV file.
+date - Current date, plus convert a Unix timestamp into a date.
 
 
 Useful command-line operators
@@ -117,4 +118,16 @@ Assuming you need lines 20 to 40,
 # Printf uses hex.
 # seek used decimal.
 printf '\x41' | dd of=file.csv bs=1 count=1 seek=28 conv=notrunc
+
+
+
+date
+  Current date
+date -d @1618957846
+  Tue Apr 202 22:30:46 UTC 2021
+date -d @0
+  Thu Jan 1 00:00:00 UTC 1970
+date '+%s'
+  1619026799
+
 

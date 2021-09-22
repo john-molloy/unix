@@ -7,6 +7,8 @@ echo "$a" | tr '[:upper:]' '[:lower:]'
 echo "$a" | awk '{print tolower($0)}'
 
 
+find . -type f -newermt 20210601 -exec ls -l {} \;
+find . -type f -name "*.[Rr]" -o -name "*.py" -exec grep -inH csv {} \;
 
 
 tar -cvf  file.tar /folder   # Create tar file

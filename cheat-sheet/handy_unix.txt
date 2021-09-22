@@ -1,7 +1,5 @@
 
-
-
-Unix / Bash
+# Unix / Bash
 
 echo "$a" | tr '[:upper:]' '[:lower:]'
 echo "$a" | awk '{print tolower($0)}'
@@ -10,8 +8,8 @@ echo "$a" | awk '{print tolower($0)}'
 find . -type f -newermt 20210601 -exec ls -l {} \;
 find . -type f -name "*.[Rr]" -o -name "*.py" -exec grep -inH csv {} \;
 
-This doesn't work - it doesn't search the files matching the first name.
-find . -type f -name "*.[rR]" -o -name "*.py" -exec -inH "search text" {} \;
+# Note the parentheses.
+find . -type f \( -name "*.[rR]" -o -name "*.py" \) -exec -inH "search text" {} \;
 
 tar -cvf  file.tar /folder   # Create tar file
 tar -cvzf  file.tar /folder  # Create compressed tar file
@@ -22,3 +20,4 @@ tar --extract --file=file.tar specificfile.c  # Extract single file
 tar -rvf  file.tar /folder   # Add more files to an existing tar file
 tar -tvfW  file.tar          # Verify tar file
 
+# End Of File

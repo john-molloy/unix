@@ -6,6 +6,7 @@
 
 :set shiftwidth=4
 
+:set ff=unix
 
 
 change spaces to tab (for 'make')

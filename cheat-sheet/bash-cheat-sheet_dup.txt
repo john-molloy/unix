@@ -1,0 +1,133 @@
+
+BASH Cheat Sheet
+================
+
+If you use Git for software source control then you will be familiar with the menu option 'Git Bash Here.'  
+And you will be familiar with 'git commit', 'git clone' and so on.  
+But Git Bash also provides a number of Unix utilities.  
+
+
+Now that Git has become common for software source control, more developers have access to some Unix functionality 
+through the the 'Git Bash Here' menu option.  
+
+
+
+
+BASH = Bourne Again SHell
+
+(The Bourne Shell is a common shell for Unix.)
+
+
+
+
+
+Number 1 - How to exit the vi editor without saving changes
+-----------------------------------------------------------
+
+You might never need to do this, but it's a basic life-skill, like 
+learning to swim.  You might never willingly go swimmimg but one day
+you just might fall into a canal.  And so it is with vi.
+
+Vi is a text editor that comes with, I believe, every distribution of
+Unix and Unix-like operating system
+
+The first thing to know about vi is that it's a 'modal' editor - it 
+has an 'edit mode' and a 'command mode'.  To exit vi, you must be in 
+command mode.  Once in command mode, you can type the command to exit.
+
+To enter command mode, press ESCAPE.  Then type this:
+  :q!
+and press ENTER.
+
+Comments: on pressing ':' the cursor goes to the bottom left of the 
+screen.  You will then see the 'q!' as you type it in.  The 'q' means 
+'quit' and the '!' means force it.
+
+If, on the other hand, you do want to save your changes, do this 
+instead.
+  Press ESCAPE
+Then type:
+  :wq
+The 'w' means 'write' and the 'q' means 'quit'.
+
+A top tip is to open the file in read-only mode using:
+  vi -R filename
+You can still edit the file and save the changes but you have to 
+use 'w!' to force a save.
+
+
+
+Useful Unix commands
+--------------------
+
+ls   - List the files in a directory.
+cat  - Short for 'concatenate'.  Show the contents of one or more files.
+       You can also join together a number of files.
+grep - Get Regular ExPression.  Search one or more files for a string.
+head - Show the top n lines in a file.
+tail - Show the bottom n lines in a file.
+wc   - Word Count. Count the number of lines, words and bytes in a file.
+find - Find files matching a set of parameters, and optionally running a command on those files.
+du   - Show Disk Usage.  
+vi   - VIsual editor. Love it or hate it, it's standard on Unix and most Unix-like operating systems.
+diff - Show the differences between a file (similar to reporting from Git).
+dd   - Change bytes within a file. Tricky one.  I used this to change the headings in a large CSV file.
+date - Current date, plus convert a Unix timestamp into a date.
+
+
+Useful command-line operators
+-----------------------------
+
+>   Redirection.
+>>  Redirection with 'append'.
+|   Pipe.
+
+
+Wrinkles
+--------
+
+Be careful with files being converted from DOS to Unix format.
+DOS text files contain CRLF at the end of each line whereas 
+Unix text files only have LF.
+
+
+
+Delving deeper
+--------------
+
+Look into the following:
+  awk - A complete scripting language
+  sed - This 'stream editor' is for making changes to text files.
+        https://en.wikipedia.org/wiki/Sed
+
+
+
+
+1{...} - perform the operations in {...} only on the first line of the file
+Thus:
+  sed '1{s/Source/Sauce/}' input.t > output.t
+
+
+Assuming you need lines 20 to 40,
+  sed -n '20,40p;41q' file_name           # I need to check the syntax
+  awk 'FNR>=20 && FNR<=40' file_name      # This was fine
+
+
+# dd
+# Changing one byte in a csv file header row.
+# Printf uses hex.
+# seek used decimal.
+printf '\x41' | dd of=file.csv bs=1 count=1 seek=28 conv=notrunc
+
+
+
+date
+  Current date
+date -d @1618957846
+  Tue Apr 202 22:30:46 UTC 2021
+date -d @0
+  Thu Jan 1 00:00:00 UTC 1970
+date '+%s'
+  1619026799
+
+
